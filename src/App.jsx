@@ -17,6 +17,7 @@ import VendedorManagement from './pages/VendedorManagement';
 import OrderManagement from './pages/OrderManagement';
 import InventoryManagement from './pages/InventoryManagement';
 import WebsitePage from './pages/WebsitePage';
+import StockAPITest from './pages/StockAPITest';
 
 // Utils
 import LoadingSpinner from './components/common/LoadingSpinner';
@@ -179,6 +180,14 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <InventoryManagement />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/stock-test" 
+        element={
+          <ProtectedRoute>
+            <StockAPITest />
           </ProtectedRoute>
         } 
       />

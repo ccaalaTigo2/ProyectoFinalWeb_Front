@@ -41,8 +41,6 @@ import {
   Warning,
   TrendingUp,
   TrendingDown,
-  AddCircle,
-  RemoveCircle,
   MoreVert,
   Category,
   QrCode,
@@ -63,6 +61,7 @@ import {
 } from '../utils/constants';
 import { formatCurrency, formatNumber, debounce } from '../utils/helpers';
 import LoadingSpinner from '../components/common/LoadingSpinner';
+import StockManagementDialog from '../components/StockManagementDialog';
 
 const InventoryManagement = () => {
   const [products, setProducts] = useState([]);
@@ -87,7 +86,6 @@ const InventoryManagement = () => {
   const [stockDialog, setStockDialog] = useState({
     open: false,
     product: null,
-    type: 'entry', // 'entry' | 'exit'
   });
 
   const [menuState, setMenuState] = useState({
@@ -106,12 +104,6 @@ const InventoryManagement = () => {
     minStock: '',
     currentStock: '',
     requiereReunion: false,
-  });
-
-  const [stockMovement, setStockMovement] = useState({
-    quantity: '',
-    reason: '',
-    notes: '',
   });
 
   const [formErrors, setFormErrors] = useState({});
@@ -198,22 +190,21 @@ const InventoryManagement = () => {
     setFormErrors({});
   };
 
-  const handleOpenStockDialog = (product, type) => {
-    setStockDialog({ open: true, product, type });
-    setStockMovement({
-      quantity: '',
-      reason: '',
-      notes: '',
-    });
+  const handleOpenStockDialog = (product) => {
+    setStockDialog({ open: true, product });
   };
 
   const handleCloseStockDialog = () => {
-    setStockDialog({ open: false, product: null, type: 'entry' });
-    setStockMovement({
-      quantity: '',
-      reason: '',
-      notes: '',
-    });
+    setStockDialog({ open: false, product: null });
+  };
+
+  const handleStockUpdated = (updatedProduct) => {
+    // Actualizar el producto en la lista
+    setProducts(prevProducts =>
+      prevProducts.map(p =>
+        p.id === updatedProduct.id ? { ...p, stock: updatedProduct.stock } : p
+      )
+    );
   };
 
   const handleFormChange = (e) => {
@@ -223,11 +214,6 @@ const InventoryManagement = () => {
     if (formErrors[name]) {
       setFormErrors(prev => ({ ...prev, [name]: '' }));
     }
-  };
-
-  const handleStockMovementChange = (e) => {
-    const { name, value } = e.target;
-    setStockMovement(prev => ({ ...prev, [name]: value }));
   };
 
   const validateForm = () => {
@@ -314,31 +300,6 @@ const InventoryManagement = () => {
       } catch (error) {
         showError('Error', error.message);
       }
-    }
-  };
-
-  const handleStockMovement = async () => {
-    try {
-      const movementData = {
-        productId: stockDialog.product.id,
-        quantity: parseInt(stockMovement.quantity),
-        type: stockDialog.type,
-        reason: stockMovement.reason,
-        notes: stockMovement.notes,
-      };
-
-      if (stockDialog.type === 'entry') {
-        await inventoryService.recordStockEntry(movementData);
-        showSuccess('Entrada registrada', 'La entrada de stock se ha registrado exitosamente');
-      } else {
-        await inventoryService.recordStockExit(movementData);
-        showSuccess('Salida registrada', 'La salida de stock se ha registrada exitosamente');
-      }
-
-      handleCloseStockDialog();
-      loadProducts();
-    } catch (error) {
-      showError('Error', error.message);
     }
   };
 
@@ -590,17 +551,11 @@ const InventoryManagement = () => {
                       <TableCell align="center">
                         <IconButton
                           size="small"
-                          onClick={() => handleOpenStockDialog(product, 'entry')}
-                          color="success"
+                          onClick={() => handleOpenStockDialog(product)}
+                          color="primary"
+                          title="Gestionar Stock"
                         >
-                          <AddCircle />
-                        </IconButton>
-                        <IconButton
-                          size="small"
-                          onClick={() => handleOpenStockDialog(product, 'exit')}
-                          color="error"
-                        >
-                          <RemoveCircle />
+                          <Inventory2 />
                         </IconButton>
                         <IconButton
                           size="small"
@@ -660,6 +615,15 @@ const InventoryManagement = () => {
         open={Boolean(menuState.anchorEl)}
         onClose={handleMenuClose}
       >
+        <MenuItem 
+          onClick={() => {
+            handleOpenStockDialog(menuState.product);
+            handleMenuClose();
+          }}
+        >
+          <Inventory2 fontSize="small" sx={{ mr: 1 }} />
+          Gestionar Stock
+        </MenuItem>
         <MenuItem 
           onClick={() => {
             handleOpenProductDialog('edit', menuState.product);
@@ -834,68 +798,13 @@ const InventoryManagement = () => {
         </DialogActions>
       </Dialog>
 
-      {/* Dialog para movimientos de stock */}
-      <Dialog
+      {/* Stock Management Dialog */}
+      <StockManagementDialog
         open={stockDialog.open}
         onClose={handleCloseStockDialog}
-        maxWidth="sm"
-        fullWidth
-      >
-        <DialogTitle>
-          {stockDialog.type === 'entry' ? 'Entrada de Stock' : 'Salida de Stock'} - {stockDialog.product?.name}
-        </DialogTitle>
-        <DialogContent>
-          <Grid container spacing={3} sx={{ mt: 1 }}>
-            <Grid size={{ xs: 12 }}>
-              <TextField
-                fullWidth
-                label="Cantidad"
-                name="quantity"
-                type="number"
-                value={stockMovement.quantity}
-                onChange={handleStockMovementChange}
-                inputProps={{ min: 1 }}
-              />
-            </Grid>
-            
-            <Grid size={{ xs: 12 }}>
-              <TextField
-                fullWidth
-                label="Motivo"
-                name="reason"
-                value={stockMovement.reason}
-                onChange={handleStockMovementChange}
-                placeholder={stockDialog.type === 'entry' ? 'Ej: Compra, Devolución' : 'Ej: Venta, Daño, Pérdida'}
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              <TextField
-                fullWidth
-                label="Notas adicionales"
-                name="notes"
-                multiline
-                rows={3}
-                value={stockMovement.notes}
-                onChange={handleStockMovementChange}
-              />
-            </Grid>
-          </Grid>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleCloseStockDialog}>
-            Cancelar
-          </Button>
-          <Button 
-            onClick={handleStockMovement} 
-            variant="contained"
-            color={stockDialog.type === 'entry' ? 'success' : 'error'}
-            disabled={!stockMovement.quantity || !stockMovement.reason}
-          >
-            {stockDialog.type === 'entry' ? 'Registrar Entrada' : 'Registrar Salida'}
-          </Button>
-        </DialogActions>
-      </Dialog>
+        product={stockDialog.product}
+        onStockUpdated={handleStockUpdated}
+      />
     </div>
   );
 };

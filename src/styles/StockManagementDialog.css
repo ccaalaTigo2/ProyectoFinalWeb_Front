@@ -1,0 +1,112 @@
+/* StockManagementDialog.css */
+.stock-dialog-content {
+  padding: 24px;
+}
+
+.stock-operation-buttons {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.stock-operation-button {
+  min-height: 80px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.stock-operation-button.active {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.stock-preview {
+  background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.stock-preview-text {
+  font-weight: 600;
+  color: #1976d2;
+}
+
+.product-info-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.current-stock-chip {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.quantity-input {
+  margin: 16px 0;
+}
+
+.quantity-input .MuiInputBase-input {
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.operation-type-grid {
+  margin: 16px 0;
+}
+
+.operation-button-wrapper {
+  position: relative;
+}
+
+.operation-button-selected {
+  border-width: 2px !important;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.25);
+}
+
+@media (max-width: 600px) {
+  .stock-operation-buttons {
+    flex-direction: column;
+  }
+  
+  .stock-operation-button {
+    min-height: 60px;
+  }
+}
+
+/* Animation for stock changes */
+.stock-change-animation {
+  animation: stockPulse 0.6s ease-in-out;
+}
+
+@keyframes stockPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(25, 118, 210, 0.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Success/Error states */
+.stock-success {
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.stock-error {
+  color: #f44336;
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.stock-warning {
+  color: #ff9800;
+  background-color: rgba(255, 152, 0, 0.1);
+}

@@ -75,12 +75,30 @@ class InventoryService {
     }
   }
 
-  // Actualizar stock del producto
-  async updateProductStock(id, stockData) {
+  // Actualizar stock del producto (establecer valor específico)
+  async updateProductStock(id, nuevoStock) {
     try {
-      return await apiService.put(`/productos/${id}/stock`, stockData);
+      return await apiService.put(`/productos/${id}/stock?nuevoStock=${nuevoStock}`);
     } catch (error) {
       throw new Error('Error al actualizar stock: ' + error.message);
+    }
+  }
+
+  // Incrementar stock del producto
+  async incrementProductStock(id, cantidad) {
+    try {
+      return await apiService.put(`/productos/${id}/stock/incrementar?cantidad=${cantidad}`);
+    } catch (error) {
+      throw new Error('Error al incrementar stock: ' + error.message);
+    }
+  }
+
+  // Decrementar stock del producto
+  async decrementProductStock(id, cantidad) {
+    try {
+      return await apiService.put(`/productos/${id}/stock/decrementar?cantidad=${cantidad}`);
+    } catch (error) {
+      throw new Error('Error al decrementar stock: ' + error.message);
     }
   }
 
