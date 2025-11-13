@@ -1,0 +1,330 @@
+/* PedidoFormDialog.css - Estilos para el formulario de creación de pedidos */
+
+/* Contenedor principal del diálogo */
+.pedido-form-dialog {
+  min-height: 80vh;
+}
+
+.pedido-form-dialog .MuiDialog-paper {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.pedido-form-dialog .MuiDialogTitle-root {
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  color: white;
+  padding: 24px;
+}
+
+/* Cards de secciones */
+.pedido-form-section {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.pedido-form-section:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Cliente info section */
+.cliente-info-section {
+  border-left: 4px solid #2196f3;
+}
+
+.cliente-data-display {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 8px;
+}
+
+/* Productos section */
+.productos-section {
+  border-left: 4px solid #4caf50;
+}
+
+.producto-search-container {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8f5e8 100%);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+/* Autocomplete personalizado */
+.producto-autocomplete .MuiAutocomplete-option {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.producto-autocomplete .MuiAutocomplete-option:hover {
+  background-color: #f5f5f5;
+}
+
+.cliente-autocomplete .MuiAutocomplete-option {
+  padding: 16px;
+}
+
+.cliente-autocomplete .MuiAutocomplete-option:hover {
+  background-color: #e3f2fd;
+}
+
+/* Lista de productos en el pedido */
+.productos-lista-section {
+  border-left: 4px solid #ff9800;
+}
+
+.productos-table {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.productos-table .MuiTableHead-root {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.productos-table .MuiTableHead-root .MuiTableCell-root {
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.productos-table .MuiTableBody-root .MuiTableRow-root:hover {
+  background-color: #f8f9fa;
+  transition: background-color 0.2s ease;
+}
+
+/* Fila del total */
+.total-row {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  font-weight: bold;
+}
+
+.total-row .MuiTableCell-root {
+  border-bottom: none;
+  padding: 16px;
+}
+
+/* Controles de cantidad */
+.cantidad-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+}
+
+.cantidad-controls .MuiTextField-root {
+  width: 60px;
+}
+
+.cantidad-controls .MuiTextField-root .MuiInputBase-input {
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.cantidad-controls .MuiIconButton-root {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e0e0e0;
+  transition: all 0.2s ease;
+}
+
+.cantidad-controls .MuiIconButton-root:hover {
+  background-color: #f5f5f5;
+  border-color: #1976d2;
+  color: #1976d2;
+}
+
+/* Chips de stock */
+.stock-chip {
+  font-size: 0.75rem;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.stock-alto {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.stock-medio {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.stock-bajo {
+  background-color: #ffcdd2;
+  color: #d32f2f;
+}
+
+/* Botones de acción */
+.accion-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.delete-button {
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  transition: all 0.2s ease;
+}
+
+.delete-button:hover {
+  background-color: rgba(244, 67, 54, 0.1);
+  border-color: #f44336;
+}
+
+/* Sección de notas */
+.notas-section {
+  border-left: 4px solid #9c27b0;
+}
+
+.notas-field textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Dialog actions */
+.pedido-form-actions {
+  padding: 24px;
+  background: #fafafa;
+  border-top: 1px solid #e0e0e0;
+}
+
+.pedido-form-actions .MuiButton-root {
+  min-width: 120px;
+  height: 48px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.pedido-form-actions .MuiButton-contained {
+  background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+}
+
+.pedido-form-actions .MuiButton-contained:hover {
+  background: linear-gradient(135deg, #1565c0 0%, #0d47a1 100%);
+  box-shadow: 0 6px 16px rgba(25, 118, 210, 0.4);
+}
+
+/* Estado de carga */
+.loading-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Animaciones de entrada */
+.pedido-form-section {
+  animation: slideInUp 0.3s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estados de validación */
+.campo-error .MuiOutlinedInput-root {
+  border-color: #f44336;
+}
+
+.campo-error .MuiFormHelperText-root {
+  color: #f44336;
+}
+
+.campo-exito .MuiOutlinedInput-root {
+  border-color: #4caf50;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pedido-form-dialog .MuiDialog-paper {
+    margin: 16px;
+    width: calc(100% - 32px);
+    max-height: calc(100% - 32px);
+  }
+
+  .cantidad-controls {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cantidad-controls .MuiTextField-root {
+    width: 80px;
+  }
+
+  .accion-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pedido-form-actions {
+    padding: 16px;
+  }
+
+  .pedido-form-actions .MuiButton-root {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
+
+/* Mejoras de accesibilidad */
+.pedido-form-dialog :focus-visible {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+
+/* Estados de hover mejorados */
+.producto-card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.producto-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Indicadores visuales */
+.campo-requerido::after {
+  content: ' *';
+  color: #f44336;
+}
+
+.campo-opcional {
+  opacity: 0.8;
+}
+
+/* Tooltips personalizados */
+.custom-tooltip {
+  background-color: #333;
+  color: white;
+  font-size: 0.875rem;
+  border-radius: 4px;
+  padding: 8px 12px;
+}

@@ -1,0 +1,389 @@
+/* VendedorManagement.css - Professional Design */
+
+/* Contenedor principal */
+.vendedor-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Header de la página */
+.vendedor-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 48px 32px;
+  margin-bottom: 32px;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+}
+
+.vendedor-title {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  margin-bottom: 8px !important;
+  font-size: 2.5rem !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.vendedor-subtitle {
+  color: rgba(255, 255, 255, 0.95) !important;
+  font-size: 1.1rem !important;
+  font-weight: 400 !important;
+}
+
+/* Contenido principal */
+.vendedor-content {
+  padding: 0 32px 32px;
+}
+
+/* Tarjetas de estadísticas */
+.vendedor-stats-card {
+  background: #ffffff !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  padding: 24px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none !important;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.vendedor-stats-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.vendedor-stats-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Iconos de estadísticas */
+.stat-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+  margin-bottom: 16px;
+}
+
+.stat-icon-wrapper .MuiSvgIcon-root {
+  color: white;
+  font-size: 32px;
+}
+
+/* Búsqueda y acciones */
+.vendedor-search-section {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.vendedor-search-input {
+  flex: 1;
+  min-width: 300px;
+}
+
+.vendedor-search-input .MuiOutlinedInput-root {
+  border-radius: 12px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.vendedor-search-input .MuiOutlinedInput-root:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-vendedor-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  font-size: 16px !important;
+  padding: 12px 28px !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+  transition: all 0.3s ease !important;
+  color: white !important;
+}
+
+.add-vendedor-button:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Tarjeta de tabla */
+.vendedor-table-card {
+  background: #ffffff !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+  overflow: hidden;
+  border: none !important;
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 24px;
+}
+
+.vendedor-table-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Tabla */
+.vendedor-table {
+  min-width: 650px;
+}
+
+.vendedor-table .MuiTableHead-root {
+  background: linear-gradient(135deg, #f8f9ff 0%, #f5f3ff 100%);
+}
+
+.vendedor-table .MuiTableHead-root .MuiTableCell-root {
+  font-weight: 700;
+  color: #2d3748;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e2e8f0;
+  padding: 20px 16px;
+}
+
+.vendedor-table .MuiTableBody-root .MuiTableRow-root {
+  transition: all 0.2s ease;
+}
+
+.vendedor-table .MuiTableBody-root .MuiTableRow-root:hover {
+  background: #f8f9ff;
+  transform: scale(1.01);
+}
+
+.vendedor-table .MuiTableCell-root {
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Chips de estado */
+.vendedor-status-chip {
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  text-transform: capitalize !important;
+}
+
+.vendedor-status-chip.active {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%) !important;
+  color: white !important;
+}
+
+.vendedor-status-chip.inactive {
+  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%) !important;
+  color: white !important;
+}
+
+.vendedor-status-chip.pending {
+  background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%) !important;
+  color: white !important;
+}
+
+/* Botones de acción */
+.vendedor-action-button {
+  transition: all 0.2s ease !important;
+}
+
+.vendedor-action-button:hover {
+  transform: scale(1.1);
+}
+
+/* Diálogos */
+.vendedor-dialog-title {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white !important;
+  padding: 24px 32px !important;
+}
+
+.vendedor-dialog-content {
+  padding: 32px !important;
+}
+
+.vendedor-dialog-actions {
+  padding: 16px 32px !important;
+  background: #f8f9ff;
+}
+
+/* Avatar de vendedor */
+.vendedor-avatar {
+  width: 48px !important;
+  height: 48px !important;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+/* Badge de comisión */
+.commission-badge {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  display: inline-block;
+}
+
+/* Responsive Design */
+@media (max-width: 959px) {
+  .vendedor-header {
+    padding: 32px 24px;
+    border-radius: 0 0 16px 16px;
+  }
+
+  .vendedor-title {
+    font-size: 2rem !important;
+  }
+
+  .vendedor-content {
+    padding: 0 16px 16px;
+  }
+
+  .vendedor-search-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .vendedor-search-input {
+    min-width: 100%;
+  }
+
+  .vendedor-stats-card {
+    margin-bottom: 16px;
+  }
+
+  .add-vendedor-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 599px) {
+  .vendedor-header {
+    padding: 24px 16px;
+    margin-bottom: 16px;
+  }
+
+  .vendedor-title {
+    font-size: 1.75rem !important;
+  }
+
+  .vendedor-subtitle {
+    font-size: 1rem !important;
+  }
+
+  .vendedor-content {
+    padding: 0 12px 12px;
+  }
+
+  .vendedor-stats-card {
+    padding: 16px !important;
+  }
+
+  .stat-icon-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+
+  .stat-icon-wrapper .MuiSvgIcon-root {
+    font-size: 24px;
+  }
+
+  .vendedor-table-card {
+    margin-top: 16px;
+  }
+
+  .vendedor-avatar {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+  .vendedor-stats-card,
+  .vendedor-table-card {
+    background: #1a202c !important;
+  }
+
+  .vendedor-table .MuiTableHead-root {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+  }
+
+  .vendedor-table .MuiTableHead-root .MuiTableCell-root {
+    color: #e2e8f0;
+  }
+
+  .vendedor-table .MuiTableBody-root .MuiTableRow-root:hover {
+    background: #2d3748;
+  }
+
+  .vendedor-dialog-actions {
+    background: #2d3748;
+  }
+}
+
+/* Loading state */
+.vendedor-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* Empty state */
+.vendedor-empty-state {
+  text-align: center;
+  padding: 64px 32px;
+  color: #718096;
+}
+
+.vendedor-empty-state .MuiSvgIcon-root {
+  font-size: 96px;
+  color: #cbd5e0;
+  margin-bottom: 16px;
+}
+
+/* Filters section */
+.vendedor-filters {
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  padding: 24px !important;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06) !important;
+}
+
+.vendedor-filters .MuiFormControl-root {
+  min-width: 200px;
+}
